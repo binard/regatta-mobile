@@ -1,7 +1,12 @@
 <div class="container-fluid">
 
   <div class="content">
-      <a href="#/game" class="btn btn-danger">Valider</a>
+	<h1>Rejoindre une partie</h1>
+	<ul>
+		<li ng-repeat="game in games">
+			{{game.name}}
+		</li>
+	</ul>
   </div>  
 
 </div>
