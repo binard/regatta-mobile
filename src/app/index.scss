@@ -1,0 +1,21 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+body{
+
+}
+.start-screen{
+	position: fixed;
+	@include vertical-align;	
+	@include horizontal-align;
+}	
+footer{	
+	position: fixed;
+	width:100%;
+	bottom : 0;
+	text-align: center;
+}
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector

@@ -1,0 +1,9 @@
+@mixin vertical-align(){
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+@mixin horizontal-align(){
+  	left: 50%;
+  	transform: translateX(-50%);
+}
