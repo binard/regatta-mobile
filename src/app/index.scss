@@ -8,6 +8,23 @@ body{
 	position: fixed;
 	@include vertical-align;	
 	@include horizontal-align;
+}
+.splashscreen{
+	background-color: $splashScreenBgColor;
+	background-image : url(#{$imagesPath}/regatta_start.png);
+	background-repeat: no-repeat;
+	background-position : center center;
+	background-size: contain;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+
+	a.start{
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
 }	
 footer{	
 	position: fixed;

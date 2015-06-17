@@ -2,16 +2,17 @@
 
 angular.module('regattaMobile')
 .controller('JoinCtrl', ['$scope', 'socket', function ($scope, socket) {
-		$scope.title = "Hello";
 		socket.on('connect', function() {
-			console.log(socket.readyState + " : Connected");
+			console.log("connected");
 
 			socket.emit('listgames', function(data) {
-				console.log('rep emit listgames', data);
+				console.log(data);
+				$scope.games = data.data;
 			});
 
 			socket.on('listgames', function(data) {
-				console.log('listgames', data);
+				console.log(data);
+				$scope.games = data.data;
 			});
 		});
  }]);

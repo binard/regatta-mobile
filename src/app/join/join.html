@@ -4,9 +4,13 @@
 	<h1>Rejoindre une partie</h1>
 	<ul>
 		<li ng-repeat="game in games">
-			{{game.name}}
+			<a href="#/playeroptions/{{game.id}}">{{game.id}}</a>
+			<ul>
+				<li ng-repeat="player in game.players">
+					{{player.playerName}}
+				</li>
+			</ul>
 		</li>
 	</ul>
   </div>  
-
 </div>

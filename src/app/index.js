@@ -11,6 +11,10 @@ var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 
         templateUrl: 'app/join/join.html',
         controller: 'JoinCtrl'
       })
+      .when('/playeroptions/:id', {
+        templateUrl: 'app/playeroptions/playeroptions.html',
+        controller : 'PlayerOptionsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
