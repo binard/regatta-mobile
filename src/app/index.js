@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'btford.socket-io'])
+var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'btford.socket-io'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -14,12 +14,14 @@ angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitiz
       .otherwise({
         redirectTo: '/'
       });
-  }).factory('socket', function (socketFactory) {
-    var myIoSocket = io.connect('ws://localhost:4512/');
-
-    mySocket = socketFactory({
-      ioSocket: myIoSocket
-    });
-
-    return mySocket;    
   });
+
+app.factory('socket', function (socketFactory) {
+  var myIoSocket = io.connect('http://localhost:8080');
+
+  var socket = socketFactory({
+    ioSocket: myIoSocket
+  });
+
+  return socket;
+});
