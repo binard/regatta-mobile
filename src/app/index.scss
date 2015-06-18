@@ -2,15 +2,16 @@
 @import "styles/variables.scss";
 
 body{
-
+	background-color: $bgColor;
 }
-.start-screen{
+footer{	
 	position: fixed;
-	@include vertical-align;	
-	@include horizontal-align;
+	width:100%;
+	bottom : 0;
+	text-align: center;
 }
 .splashscreen{
-	background-color: $splashScreenBgColor;
+	background-color: $primaryColor;
 	background-image : url(#{$imagesPath}/regatta_start.png);
 	background-repeat: no-repeat;
 	background-position : center center;
@@ -26,11 +27,53 @@ body{
 		height: 100%;
 	}
 }	
-footer{	
-	position: fixed;
-	width:100%;
-	bottom : 0;
-	text-align: center;
+.start-screen{	
+	.header {		
+		background-color: $primaryColor;
+		padding: 20px;
+		h1 {
+			color: $textLightColor;
+			font-weight: bold;
+			font-size: 30px;
+			text-align: center;
+			margin:0;
+		}
+	}
+	ul.list-group li{
+		a{
+			display: block;
+		}
+		a i{
+			float: right;
+		}
+	}
+	ul.list-group li:nth-child(even){
+		background-color: $evenListItemColor;	
+	}
+	.form{
+		padding : 20px;
+	}	
+}
+select.color-selector{
+	option{
+		color: #fff;
+		font-weight: bold;
+	}
+	option.blue{
+		background-color: #1F4788;
+	}
+	option.red{
+		background-color: #8F1D21;
+	}
+	option.yellow{
+		background-color: #FFB61E;
+	}
+	option.green{
+		background-color: #26A65B;
+	}
+	option.purple{
+		background-color: #8E44AD;
+	}
 }
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */

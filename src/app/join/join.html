@@ -1,16 +1,10 @@
-<div class="container-fluid">
-
-  <div class="content">
-	<h1>Rejoindre une partie</h1>
-	<ul>
-		<li ng-repeat="game in games">
-			<a href="#/playeroptions/{{game.id}}">{{game.id}}</a>
-			<ul>
-				<li ng-repeat="player in game.players">
-					{{player.playerName}}
-				</li>
-			</ul>
+<div class="content start-screen">
+	<div class="header">
+		<h1>Rejoindre une partie</h1>
+	</div>
+	<ul class="list-group">
+		<li ng-repeat="game in games" class="list-group-item">
+			<a href="#/playeroptions/{{game.id}}">Partie {{game.id}} <i class="glyphicon glyphicon-menu-right"></i></a>
 		</li>
 	</ul>
-  </div>  
 </div>

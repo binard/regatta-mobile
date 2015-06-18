@@ -3,7 +3,7 @@
 angular.module('regattaMobile')
 .controller('JoinCtrl', ['$scope', 'socket', function ($scope, socket) {
 		socket.on('connect', function() {
-			console.log("connected");
+			console.log('connected');
 
 			socket.emit('listgames', function(data) {
 				console.log(data);
