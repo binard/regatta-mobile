@@ -14,10 +14,11 @@ module.exports = function(options) {
 
     gulp.watch([
       options.src + '/app/**/*.css',
-      options.src + '/app/**/*.scss'
+      options.src + '/app/**/index.scss',
+	  options.src + '/app/**/styles/*.scss'
     ], function(event) {
       if(isOnlyChange(event)) {
-        gulp.start('styles');
+        gulp.start('styles.watch');
       } else {
         gulp.start('inject');
       }
