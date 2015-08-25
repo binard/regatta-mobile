@@ -7,3 +7,13 @@
   	left: 50%;
   	transform: translateX(-50%);
 }
+
+@mixin circle(){
+	border-radius : 100%;
+}
+
+@mixin circleSize($value){
+	height: $value;
+	width: $value;
+	min-width: $value;
+}

@@ -75,6 +75,44 @@ select.color-selector{
 		background-color: #8E44AD;
 	}
 }
+
+.movepad{
+	margin : 20px;
+	.arrow {
+		font-size : 84px;
+		cursor: pointer;
+	}
+	.arrow.top,
+	.arrow.bottom {
+		text-align: center;
+		clear: both;
+	}
+	.arrow.left{
+		float: left;
+	}
+	.arrow.right{
+		float: right;
+	}
+	.middle{
+		overflow: hidden;
+		margin : 50px 0;
+		text-align: center;
+	}
+	.main-valid-button{
+		@include circleSize(84px);
+		font-size: 42px;
+
+	}
+	[class^="md-keyboard-arrow"]{
+		@include circle;
+		color:red;
+	}
+	[class^="md-keyboard-arrow"]:hover,
+	[class^="md-keyboard-arrow"]:active{
+		background-color: $padArrowHover;
+	}
+}
+
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */
 // injector

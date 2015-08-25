@@ -10,18 +10,22 @@ var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 
       .when('/join', {
         templateUrl: 'app/join/join.html',
         controller: 'JoinCtrl'
-      })
+      })      
       .when('/playeroptions/:id', {
         templateUrl: 'app/playeroptions/playeroptions.html',
         controller : 'PlayerOptionsCtrl'
       })
+      .when('/start', {
+        templateUrl: 'app/start/start.html',
+        controller: 'StartCtrl'
+      })      
       .otherwise({
         redirectTo: '/'
       });
   });
 
 app.factory('socket', function (socketFactory) {
-  var myIoSocket = io.connect('http://localhost:8080');
+  var myIoSocket = io.connect('http://localhost:8041');
 
   var socket = socketFactory({
     ioSocket: myIoSocket
