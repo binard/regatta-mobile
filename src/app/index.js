@@ -15,7 +15,11 @@ var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 
         templateUrl: 'app/playeroptions/playeroptions.html',
         controller : 'PlayerOptionsCtrl'
       })
-      .when('/start', {
+      .when('/playersvalidation/:id', {
+        templateUrl : 'app/playersvalidation/playersvalidation.html',
+        controller : 'PlayersValidationCtrl'
+      })
+      .when('/start/:id', {
         templateUrl: 'app/start/start.html',
         controller: 'StartCtrl'
       })      
@@ -25,7 +29,7 @@ var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 
   });
 
 app.factory('socket', function (socketFactory) {
-  var myIoSocket = io.connect('http://localhost:8041');
+  var myIoSocket = io.connect('http://localhost');
 
   var socket = socketFactory({
     ioSocket: myIoSocket
