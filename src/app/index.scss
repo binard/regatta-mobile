@@ -105,7 +105,6 @@ select.color-selector{
 	}
 	[class^="md-keyboard-arrow"]{
 		@include circle;
-		color:red;
 	}
 	[class^="md-keyboard-arrow"]:hover,
 	[class^="md-keyboard-arrow"]:active{
