@@ -1,14 +1,18 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
-body{
+html, body{
 	background-color: $bgColor;
+	height: 100%;
 }
 footer{	
 	position: fixed;
 	width:100%;
 	bottom : 0;
 	text-align: center;
+}
+ul{
+	list-style-type : none;
 }
 .splashscreen{
 	background-color: $primaryColor;
@@ -109,6 +113,54 @@ select.color-selector{
 	[class^="md-keyboard-arrow"]:hover,
 	[class^="md-keyboard-arrow"]:active{
 		background-color: $padArrowHover;
+	}
+}
+.board {
+	position: fixed;
+	height: 100%;
+	ul.cards {
+		padding: 0;
+		height: 100%;
+		li {
+			padding : 0;
+			box-sizing: border-box;
+			height: 100%;
+			img {
+				display: block;
+				height: 100%;
+			}
+		}
+	}
+}
+.actionbar{
+	display: block;
+	z-index: 100;
+	position : absolute;
+	bottom : 0;
+	left : 0;
+	width: 100%;
+	margin: 0;
+	box-sizing: border-box;
+	padding: 5px 10px;
+}
+.actionbar > div{
+	background-color: $actionBarBgColor;
+	padding: 5px 0;
+	ul.actions{
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+		li {
+			display: inline-block;
+			border-radius : 100%;
+			border: 1px solid #fff;
+			color: #fff;
+			width : 40px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			font-size: 20px;
+		}
 	}
 }
 

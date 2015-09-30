@@ -1,0 +1,8 @@
+<div class="board" ng-controller="BoardCtrl as boardCtrl">
+	<ul class="cards">
+		<li ng-repeat="card in boardCtrl.My.cards" ng-show="boardCtrl.isVisible($index)">
+			<img ng-src="{{boardCtrl.getCurrentImage($index)}}" alt="{{card.name}}" ng-click="boardCtrl.showNextCard()" />
+		</li>
+	</ul>
+	<action-navbar on-click-board="boardCtrl.maFunction()" />
+</div>

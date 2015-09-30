@@ -16,12 +16,7 @@ angular.module('regattaMobile')
 
 			socket.on('gamelaunched', function(startPlayer){
 				console.log('gamelaunched', startPlayer);
-				socket.emit('my', function(myResp) {
-					console.log('my', myResp);
-					if(myResp.data.player.playerName === startPlayer) {
-						$location.path("/start/" + $routeParams.id);		
-					}
-				});
+				$location.path("/board/" + $routeParams.id);
 			});			
     }
 }]);
