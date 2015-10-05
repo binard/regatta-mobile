@@ -4,5 +4,5 @@
 			<img ng-src="{{boardCtrl.getCurrentImage($index)}}" alt="{{card.name}}" ng-click="boardCtrl.showNextCard()" />
 		</li>
 	</ul>
-	<action-navbar on-click-board="boardCtrl.maFunction()" />
+	<action-navbar onstart="boardCtrl.maFunction();" />
 </div>

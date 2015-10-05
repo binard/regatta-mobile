@@ -5,19 +5,18 @@
 
   /** @ngInject */
   function actionNavbar() {
-
-    /** @ngInject */
-    function ActionNavbarController() {
-    }
     
     var directive = {
-      restrict: 'E',
+      restrict: 'EA',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
+        onstart : "&"
       },
-      controller: ActionNavbarController,
-      controllerAs: 'vm',
-      bindToController: true
+      link : function(scope){
+        scope.onFlagAction = function(){
+          scope.onstart();
+        }
+      }
     };
 
     return directive;
