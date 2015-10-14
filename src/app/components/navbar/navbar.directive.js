@@ -5,25 +5,31 @@
 
   /** @ngInject */
   function actionNavbar() {
-    
+
     var directive = {
-      restrict: 'EA',
+      restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
-        onstart : "&"
+        flagIsVisible : '=',
+        onStart : '&',
+        onMoveMap : '&'
       },
       link : function(scope){
         scope.onFlagAction = function(){
-          scope.onstart();
+          scope.onStart();
+        },
+        scope.onMoveCrossAction = function(){
+          scope.onMoveMap();
         }
       }
     };
 
     return directive;
+
   }
 
     angular
     .module('regattaMobile')
-    .directive('actionNavbar', actionNavbar);
+    .directive('actionnavbar', actionNavbar);
 
 })();

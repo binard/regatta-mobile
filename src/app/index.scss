@@ -80,11 +80,50 @@ select.color-selector{
 	}
 }
 
+.movepad-container{
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	z-index: 100;
+	position : absolute;
+	bottom : 0;
+	left : 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	box-sizing: border-box;	
+	background-color : $overlayBgColor;
+	padding: 0;
+	margin: 0;
+
+	.closebutton{
+		display: block;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-size: 24px;
+		cursor: pointer;
+	}
+}
+
 .movepad{
-	margin : 20px;
+	width: 90%;
+	.cmd.top{
+		.kb-button{
+			font-size: 60px;
+		}
+		display: flex;
+		justify-content: space-between;
+	}
+	.cmd.bottom{
+		.kb-button{
+			font-size: 60px;
+		}
+		display: flex;
+		justify-content: space-between;
+	}	
 	.arrow {
 		font-size : 84px;
-		cursor: pointer;
 	}
 	.arrow.top,
 	.arrow.bottom {
@@ -99,7 +138,7 @@ select.color-selector{
 	}
 	.middle{
 		overflow: hidden;
-		margin : 50px 0;
+		margin : 120px 0;
 		text-align: center;
 	}
 	.main-valid-button{
@@ -107,12 +146,14 @@ select.color-selector{
 		font-size: 42px;
 
 	}
-	[class^="md-keyboard-arrow"]{
+	.kb-button{
 		@include circle;
-	}
-	[class^="md-keyboard-arrow"]:hover,
-	[class^="md-keyboard-arrow"]:active{
 		background-color: $padArrowHover;
+		cursor: pointer;
+	}
+	.kb-button:hover,
+	.kb-button:active{
+		opacity: 0.8;
 	}
 }
 .board {
@@ -155,12 +196,13 @@ select.color-selector{
 			border-radius : 100%;
 			border: 1px solid #fff;
 			color: #fff;
-			width : 40px;
-			height: 40px;
+			width : 50px;
+			height: 50px;
 			text-align: center;
-			line-height: 40px;
-			font-size: 20px;
+			line-height: 50px;
+			font-size: 30px;
 			margin-right: 10px;
+			cursor: pointer;
 			:hover{
 				opacity: 0.7;
 			}

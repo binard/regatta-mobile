@@ -1,8 +1,8 @@
 <nav class="actionbar">
   <div>
     <ul class="actions">
-      <li ng-click="onFlagAction()"><i class="fa fa-flag"></i></li>
-      <li><i class="fa fa-arrows"></i></li>
+      <li ng-click="onFlagAction()" ng-show="flagIsVisible"><i class="fa fa-flag"></i></li>
+      <li ng-click="onMoveCrossAction()"><i class="fa fa-arrows"></i></li>
       <li><i class="fa fa-trash"></i></li>
       <li><i class="fa fa-play"></i></li>
       <li><i class="fa fa-forward"></i></li>
