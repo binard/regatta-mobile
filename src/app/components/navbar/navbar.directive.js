@@ -12,18 +12,26 @@
       scope: {
         flagIsVisible : '=',
         onStart : '&',
-        onMoveMap : '&'
+        onMoveMap : '&',
+        onTackBabord : '&',
+        onTackTribord : '&'
       },
       link : function(scope){
+        scope.tackTemplateUrl = "popoverTackTemplate.html";
         scope.onFlagAction = function(){
           scope.onStart();
-        },
+        };
         scope.onMoveCrossAction = function(){
           scope.onMoveMap();
-        }
+        };
+        scope.onTackBabordAction = function(){
+          scope.onTackBabord();
+        };
+        scope.onTackTribordAction = function(){
+          scope.onTackTribord();
+        };
       }
     };
-
     return directive;
 
   }

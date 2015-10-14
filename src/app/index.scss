@@ -5,7 +5,7 @@ html, body{
 	background-color: $bgColor;
 	height: 100%;
 }
-footer{	
+footer{
 	position: fixed;
 	width:100%;
 	bottom : 0;
@@ -30,9 +30,9 @@ ul{
 		width: 100%;
 		height: 100%;
 	}
-}	
-.start-screen{	
-	.header {		
+}
+.start-screen{
+	.header {
 		background-color: $primaryColor;
 		padding: 20px;
 		h1 {
@@ -52,11 +52,11 @@ ul{
 		}
 	}
 	ul.list-group li:nth-child(even){
-		background-color: $evenListItemColor;	
+		background-color: $evenListItemColor;
 	}
 	.form{
 		padding : 20px;
-	}	
+	}
 }
 select.color-selector{
 	option{
@@ -91,7 +91,7 @@ select.color-selector{
 	width: 100%;
 	height: 100%;
 	margin: 0;
-	box-sizing: border-box;	
+	box-sizing: border-box;
 	background-color : $overlayBgColor;
 	padding: 0;
 	margin: 0;
@@ -121,7 +121,7 @@ select.color-selector{
 		}
 		display: flex;
 		justify-content: space-between;
-	}	
+	}
 	.arrow {
 		font-size : 84px;
 	}
@@ -203,11 +203,21 @@ select.color-selector{
 			font-size: 30px;
 			margin-right: 10px;
 			cursor: pointer;
-			:hover{
-				opacity: 0.7;
-			}
+      button{
+        border: none;
+        background: transparent;
+      }
 		}
 	}
+}
+
+.actionbar > div ul li .tackbutton{
+  font-size: 3em;
+  button{
+    background: transparent;
+    border: 1px solid #fff;
+    @include circle;
+  }
 }
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject

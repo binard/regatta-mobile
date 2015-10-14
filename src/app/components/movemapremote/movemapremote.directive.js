@@ -18,15 +18,19 @@
       },
       link : function(scope, $element, attrs){
         scope.moveLeft = function() {
+          console.log('moveLeft');
           movingView(0, 0, 10, 0);
         };
         scope.moveRight = function() {
+          console.log('moveRight');
           movingView(0, 0, 0, 10);
         };
         scope.moveTop = function() {
+          console.log('moveTop');
           movingView(10, 0, 0, 0);
         };
         scope.moveBottom = function() {
+          console.log('moveBottom');
           movingView(0, 10, 0, 0);
         };
         scope.reset = function() {
@@ -39,6 +43,7 @@
           zoomMap(10, 0);
         };
         function movingView(top, bottom, left, right) {
+          console.log('movingView : ' + top + ":" + bottom + ":" + left + ":" + right + " //GameId : " + scope.gameId);
           socket.emit(
             'movingview',
             {

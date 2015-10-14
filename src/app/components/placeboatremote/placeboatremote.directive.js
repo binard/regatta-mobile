@@ -25,10 +25,10 @@
           placeOnStart(1, 0, 0);
         };
         scope.moveTop = function() {
-          placeOnStart(0, 1, 0);
+          placeOnStart(0, -1, 0);
         };
         scope.moveBottom = function() {
-          placeOnStart(0, -1, 0);
+          placeOnStart(0, 1, 0);
         };
         scope.rotateLeft = function() {
           placeOnStart(0, 0, -90);

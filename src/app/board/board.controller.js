@@ -450,24 +450,39 @@ angular.module('regattaMobile')
 			paramStr += '&' + paramIndex + '=' + encodeURIComponent(me.My.cards[index].svgParams[paramIndex]);
 		}
 		return 'http://localhost:8041/svg?svgfile=carte' + paramStr;
-	}
+	};
 
 	this.showNextCard = function() {
 		me.currentCardIndex = ++me.currentCardIndex % 5;
-	}
+	};
 
 	this.isVisible = function(index) {
 		return me.currentCardIndex === index;
-	}
+	};
 
 	this.showStartRemote = function() {
 		me.startRemoteIsVisible = ! me.startRemoteIsVisible;
 		me.moveMapRemoteIsVisible = false;
-	}
+	};
 
 	this.showMoveMapRemote = function() {
 		me.moveMapRemoteIsVisible = ! me.moveMapRemoteIsVisible;
 		me.startRemoteIsVisible = false;
-	}
-
+	};
+  this.tack = function(angle){
+    socket.emit(
+      'tack',
+      {
+        'gameId':me.gameId,
+        'playerName': me.My.playerName,
+        'angle': angle
+      },
+      function(response) {
+        console.log('tack', response);
+        if(response.status === 'error'){
+          alert(response.data.code + ' : ' + response.data.message);
+        }
+      }
+    )
+  };
 }]);
