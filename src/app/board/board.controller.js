@@ -3,7 +3,7 @@
 angular.module('regattaMobile')
 .controller('BoardCtrl', ['$routeParams', '$location', 'socket', function ($routeParams, $location, socket) {
     var me = this;
-    me.IsBegun = false;
+    me.isBegun = false;
 
     socket.on('connect', function() {
       console.log('connected');
@@ -29,7 +29,7 @@ angular.module('regattaMobile')
     });
     socket.on('gamelaunched', function(response){
       socket.emit('my', function(response){
-        console.log(response);
+        console.log('gamelaunched my', response);
         me.My = response.data.player;
       });
     });
@@ -431,25 +431,27 @@ angular.module('regattaMobile')
 	this.isStartedMode = false;
 	this.startRemoteIsVisible = false;
 	this.moveMapRemoteIsVisible = false;
+  this.cardSelectionIsVisible = false;
 	this.cards = [];
+  this.selectedCards = [];
 	this.currentCardIndex = 0;
 
-	socket.emit('my', function(myResp) {
-		console.log('my', myResp);
-		//this.My = myResp.data.player;
-      //this.currentCardIndex = 0;
-		// if(myResp.data.player.started === startPlayer) {
-		// 	//$location.path("/start/" + $routeParams.id);
-		// 	$scope.isStartedMode = true;
-		// }
-	});
+	//socket.emit('my', function(myResp) {
+	//	console.log('my', myResp);
+	//	//this.My = myResp.data.player;
+     // //this.currentCardIndex = 0;
+	//	// if(myResp.data.player.started === startPlayer) {
+	//	// 	//$location.path("/start/" + $routeParams.id);
+	//	// 	$scope.isStartedMode = true;
+	//	// }
+	//});
 
 	this.getCurrentImage = function(index){
 		var paramStr = '';
 		for (var paramIndex in me.My.cards[index].svgParams) {
 			paramStr += '&' + paramIndex + '=' + encodeURIComponent(me.My.cards[index].svgParams[paramIndex]);
 		}
-		return 'http://localhost:8041/svg?svgfile=carte' + paramStr;
+		return 'http://192.168.1.59:8041/svg?svgfile=carte' + paramStr;
 	};
 
 	this.showNextCard = function() {
@@ -485,4 +487,58 @@ angular.module('regattaMobile')
       }
     )
   };
+    this.cardIsSelected = function(index){
+      return  _.contains(me.selectedCards, index);
+    };
+    this.selectCardToggle = function(index){
+      if (me.selectedCards.length < 3 && !_.contains(me.selectedCards, index)) {
+        me.selectedCards.push(index);
+      }
+      else {
+        var arrayIndex = me.selectedCards.indexOf(index);
+        if(arrayIndex > -1){
+          me.selectedCards.splice(arrayIndex, 1);
+        }
+      }
+    };
+  this.dropCards = function(){
+    socket.emit(
+        'dropcard',
+        {
+          'gameId': me.gameId,
+          'playerName': me.My.playerName,
+          'cards': me.selectedCards
+        },
+        function(data) {
+          console.log('dropcard', data);
+        }
+      );
+  };
+    this.takeCards = function(cardCount){
+      socket.emit(
+        'takecard',
+        {
+          'gameId': me.gameId,
+          'playerName': me.My.playerName,
+          'cardCount': cardCount
+        },
+        function(data) {
+          console.log('takecard', data);
+          socket.emit('my', function(response){
+            console.log(response);
+            me.My = response.data.player;
+          });
+        }
+      );
+    };
+    this.play = function(){
+      if(me.cardSelectionIsVisible && me.selectedCards.length > 0){
+        if(confirm('Etes-vous sûr de vouloir échanger ces ' + me.selectedCards.length + ' cartes')){
+          me.dropCards();
+          me.takeCards(me.selectedCards.length);
+          me.selectedCards.splice(0, me.selectedCards.length);
+          me.cardSelectionIsVisible = false;
+        }
+      }
+    };
 }]);

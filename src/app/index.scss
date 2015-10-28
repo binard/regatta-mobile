@@ -83,7 +83,7 @@ select.color-selector{
 .movepad-container{
 	display: flex;
 	align-items: center;
-    justify-content: center;
+  justify-content: center;
 	z-index: 100;
 	position : absolute;
 	bottom : 0;
@@ -165,11 +165,33 @@ select.color-selector{
 		li {
 			padding : 0;
 			box-sizing: border-box;
-			height: 100%;
+			max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
 			img {
-				display: block;
-				height: 100%;
+				max-width: 100%;
+        max-height: 100%;
 			}
+      div {
+        height: 100%;
+        width : 100%;
+        .select-card-button{
+          background: $overlayBgColor;
+          color: #bbb;
+          border: 1px solid #fff;
+          font-size: 100px;
+          position: absolute;
+          display: block;
+          left: 50%;
+          margin-left: -50px;
+          top: 50%;
+          margin-top: -50px;
+        }
+        .select-card-button.active {
+          color: #fff;
+        }
+      }
 		}
 	}
 }

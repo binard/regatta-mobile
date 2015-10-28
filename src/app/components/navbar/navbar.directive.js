@@ -14,7 +14,9 @@
         onStart : '&',
         onMoveMap : '&',
         onTackBabord : '&',
-        onTackTribord : '&'
+        onTackTribord : '&',
+        onTrash : '&',
+        onPlay : '&'
       },
       link : function(scope){
         scope.tackTemplateUrl = "popoverTackTemplate.html";
@@ -30,10 +32,15 @@
         scope.onTackTribordAction = function(){
           scope.onTackTribord();
         };
+        scope.onTrashAction = function(){
+          scope.onTrash();
+        };
+        scope.onPlayAction = function(){
+          scope.onPlay();
+        };
       }
     };
     return directive;
-
   }
 
     angular
