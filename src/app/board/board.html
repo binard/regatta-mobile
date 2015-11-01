@@ -1,15 +1,47 @@
 <div class="board" ng-controller="BoardCtrl as boardCtrl">
-	<ul class="cards">
-		<li ng-repeat="card in boardCtrl.My.cards" ng-show="boardCtrl.isVisible($index)">
-      <div ng-show="boardCtrl.cardSelectionIsVisible">
-        <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }" ng-click="boardCtrl.selectCardToggle($index)">
-          <i class="fa fa-check"></i>
-        </button>
-      </div>
-			<img ng-src="{{boardCtrl.getCurrentImage($index)}}" alt="{{card.name}}" ng-click="boardCtrl.showNextCard()" />
-		</li>
-	</ul>
-	<actionnavbar on-start="boardCtrl.showStartRemote()" on-move-map="boardCtrl.showMoveMapRemote()" on-tack-babord="boardCtrl.tack(-90)" on-tack-tribord="boardCtrl.tack(90)" on-trash="boardCtrl.cardSelectionIsVisible = !boardCtrl.cardSelectionIsVisible" flag-is-visible="!boardCtrl.isBegun" on-play="boardCtrl.play()" />
-	<placeboatremote is-visible="boardCtrl.startRemoteIsVisible" player="boardCtrl.My" game-id="boardCtrl.gameId" is-begun="boardCtrl.isBegun" />
-	<movemapremote is-visible="boardCtrl.moveMapRemoteIsVisible" game-id="boardCtrl.gameId" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 80"
+       style="height: 90%;width: 100%;">
+
+    <g>
+      <rect ng-repeat="i in [6, 5, 4, 3, 2, 1, 0]" class="possibility"
+            height="10" width="5" x="0" ng-attr_y="{{ $index * 10 + 5 }}">
+      </rect>
+    </g>
+    <g>
+      <rect ng-repeat="i in [7, 8, 9, 10, 11]" class="possibility"
+            height="5" width="11" ng-attr_x="{{ 5 + $index * 11 }}" y="0">
+      </rect>
+    </g>
+    <g>
+      <rect ng-repeat="i in [12, 13, 14, 15, 16, 17, 18]" class="possibility"
+            height="10" width="5" x="60" ng-attr_y="{{ $index * 10 + 5 }}">
+      </rect>
+    </g>
+    <g>
+      <rect ng-repeat="i in [19, 20, 21, 22, 23]" class="possibility"
+            height="5" width="11" ng-attr_x="{{ 5 + $index * 11 }}" y="75">
+      </rect>
+    </g>
+    <g ng-repeat="card in boardCtrl.My.cards" width="55" height="70" ng-show="boardCtrl.isVisible($index)">
+      <image ng-click="boardCtrl.showNextCard()"
+             xlink:href="http://localhost/svg?svgfile=carte&card-un-gauche=display%3A%20block%3B"
+             x="5" y="5" width="55" height="70" preserveAspectRatio="none">
+      </image>
+      <foreignObject width="55" height="70" x="5" y="5">
+        <div ng-show="boardCtrl.cardSelectionIsVisible" xmlns="http://www.w3.org/1999/xhtml"
+             class="card-overlay">
+          <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }" ng-click="boardCtrl.selectCardToggle($index)">
+            <i class="fa fa-check"></i>
+          </button>
+        </div>
+      </foreignObject>
+      <!--rect height="20" width="22" y="35" x="28" style="stroke: white;fill: transparent;stroke-width: 1"></rect-->
+    </g>
+  </svg>
+  <div>
+    <actionnavbar on-start="boardCtrl.showStartRemote()" on-move-map="boardCtrl.showMoveMapRemote()" on-tack-babord="boardCtrl.tack(-90)" on-tack-tribord="boardCtrl.tack(90)" on-trash="boardCtrl.cardSelectionIsVisible = !boardCtrl.cardSelectionIsVisible" flag-is-visible="!boardCtrl.isBegun" on-play="boardCtrl.play()" />
+    <placeboatremote is-visible="boardCtrl.startRemoteIsVisible" player="boardCtrl.My" game-id="boardCtrl.gameId" is-begun="boardCtrl.isBegun" />
+    <movemapremote is-visible="boardCtrl.moveMapRemoteIsVisible" game-id="boardCtrl.gameId" />
+  </div>
+
 </div>

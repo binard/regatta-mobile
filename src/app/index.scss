@@ -157,58 +157,41 @@ select.color-selector{
 	}
 }
 .board {
-	position: fixed;
+  position: fixed;
 	height: 100%;
-	ul.cards {
-		padding: 0;
-		height: 100%;
-		li {
-			padding : 0;
-			box-sizing: border-box;
-			max-width: 100%;
-      max-height: 100%;
-      display: flex;
-      justify-content: center;
-			img {
-				max-width: 100%;
-        max-height: 100%;
-			}
-      div {
-        height: 100%;
-        width : 100%;
-        .select-card-button{
-          background: $overlayBgColor;
-          color: #bbb;
-          border: 1px solid #fff;
-          font-size: 100px;
-          position: absolute;
-          display: block;
-          left: 50%;
-          margin-left: -50px;
-          top: 50%;
-          margin-top: -50px;
-        }
-        .select-card-button.active {
-          color: #fff;
-        }
-      }
-		}
-	}
+  width: 100%;
+  rect.possibility {
+    fill: transparent;
+    stroke: #ccc;
+    stroke-width: 0.1;
+  }
+  div.card-overlay {
+    height: 70px;
+    width: 55px;
+    .select-card-button{
+      background: $overlayBgColor;
+      color: #bbb;
+      border: 1px solid #fff;
+      margin-top: 23px;
+      margin-left: 13.2px;
+    }
+    .select-card-button.active {
+      color: #fff;
+    }
+  }
 }
 .actionbar{
 	display: block;
 	z-index: 100;
-	position : absolute;
 	bottom : 0;
 	left : 0;
 	width: 100%;
 	margin: 0;
 	box-sizing: border-box;
-	padding: 5px 10px;
+  height: 10%;
 }
 .actionbar > div{
 	background-color: $actionBarBgColor;
-	padding: 5px 0;
 	ul.actions{
 		display: flex;
 		justify-content: center;
