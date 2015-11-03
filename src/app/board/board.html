@@ -27,13 +27,10 @@
              ng-href="{{boardCtrl.trustSrc(boardCtrl.getCurrentImage($index))}}"
              xlink:href="" x="5" y="5" width="55" height="70" preserveAspectRatio="none">
       </image>
-      <foreignObject width="55" height="70" x="5" y="5">
-        <div ng-show="boardCtrl.cardSelectionIsVisible" xmlns="http://www.w3.org/1999/xhtml"
-             class="card-overlay">
-          <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }" ng-click="boardCtrl.selectCardToggle($index)">
-            <i class="fa fa-check"></i>
-          </button>
-        </div>
+      <foreignObject width="28" height="24" x="18.5" y="28" ng-show="boardCtrl.cardSelectionIsVisible" class="card-overlay">
+        <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }" ng-click="boardCtrl.selectCardToggle($index)">
+          <i class="fa fa-check"></i>
+        </button>
       </foreignObject>
       <!--rect height="20" width="22" y="35" x="28" style="stroke: white;fill: transparent;stroke-width: 1"></rect-->
     </g>

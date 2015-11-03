@@ -172,15 +172,11 @@ select.color-selector{
       fill: #aaa;
     }
   }
-  div.card-overlay {
-    height: 70px;
-    width: 55px;
+.card-overlay {
     .select-card-button{
       background: $overlayBgColor;
       color: #bbb;
       border: 1px solid #fff;
-      margin-top: 23px;
-      margin-left: 13.2px;
     }
     .select-card-button.active {
       color: #fff;
