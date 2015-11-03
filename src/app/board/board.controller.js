@@ -2,42 +2,21 @@
 
 angular.module('regattaMobile')
 .controller('BoardCtrl', ['$routeParams', '$location', '$sce', 'socket', function ($routeParams, $location, $sce, socket) {
-    this.trustSrc = function(src) {
-      return $sce.trustAsResourceUrl(src);
-    }
+  this.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  };
 
-    var me = this;
-    me.isBegun = false;
+  var me = this;
+  me.isBegun = false;
+  me.gameId = $routeParams.id;
 
-    socket.on('connect', function() {
-      console.log('connected');
-
-      socket.emit('listgames', function(data) {
-        console.log(data);
-        me.gameId = data.data[0].id;
-        socket.emit('joingame', {
-              gameId : me.gameId,
-              playerName: "Patrick",
-              color: "#FF0000",
-              number: 51
-            }, function (response) {
-                console.log(response);
-                socket.emit('startgame', {
-                  gameId : me.gameId
-                }, function (response) {
-                  console.log(response);
-
-                  });
-        });
-        });
-    });
-    socket.on('gamelaunched', function(response){
-      socket.emit('my', function(response){
-        console.log('gamelaunched my', response);
-        me.My = response.data.player;
-        me.cards = me.My.cards;
-      });
-    });
+  socket.emit('my', function(response){
+    console.log('gamelaunched my', response);
+    me.My = response.data.player;
+    me.cards = me.My.cards;
+    me.playerName = me.My.playerName;
+    me.currentCardIndex = 0;
+  });
 
 	this.isStartedMode = false;
 	this.startRemoteIsVisible = false;
@@ -46,23 +25,15 @@ angular.module('regattaMobile')
 	this.cards = [];
   this.selectedCards = [];
 	this.currentCardIndex = 0;
-
-	//socket.emit('my', function(myResp) {
-	//	console.log('my', myResp);
-	//	//this.My = myResp.data.player;
-     // //this.currentCardIndex = 0;
-	//	// if(myResp.data.player.started === startPlayer) {
-	//	// 	//$location.path("/start/" + $routeParams.id);
-	//	// 	$scope.isStartedMode = true;
-	//	// }
-	//});
+    this.removedCardsCount = 0;
 
 	this.getCurrentImage = function(index){
 		var paramStr = '';
 		for (var paramIndex in me.My.cards[index].svgParams) {
 			paramStr += '&' + paramIndex + '=' + encodeURIComponent(me.My.cards[index].svgParams[paramIndex]);
 		}
-		return 'http://192.168.1.63:8041/svg?svgfile=carte' + paramStr;
+
+		return 'http://192.168.1.61/svg?svgfile=carte' + paramStr;
 	};
 
   this.cardDirectionIsSelectable = function(numPossibilty){
@@ -153,31 +124,38 @@ angular.module('regattaMobile')
         }
       );
   };
-    this.takeCards = function(cardCount){
-      socket.emit(
-        'takecard',
-        {
-          'gameId': me.gameId,
-          'playerName': me.My.playerName,
-          'cardCount': cardCount
-        },
-        function(data) {
-          console.log('takecard', data);
-          socket.emit('my', function(response){
-            console.log(response);
-            me.My = response.data.player;
-          });
-        }
-      );
-    };
-    this.play = function(){
-      if(me.cardSelectionIsVisible && me.selectedCards.length > 0){
-        if(confirm('Etes-vous sûr de vouloir échanger ces ' + me.selectedCards.length + ' cartes')){
-          me.dropCards();
-          me.takeCards(me.selectedCards.length);
-          me.selectedCards.splice(0, me.selectedCards.length);
-          me.cardSelectionIsVisible = false;
-        }
+  this.takeCards = function(cardCount){
+    socket.emit(
+      'takecard',
+      {
+        'gameId': me.gameId,
+        'playerName': me.My.playerName,
+        'cardCount': cardCount
+      },
+      function(data) {
+        console.log('takecard', data);
+        socket.emit('my', function(response){
+          console.log(response);
+          me.My = response.data.player;
+          me.cards = me.My.cards;
+          me.removedCardsCount = 0;
+        });
       }
-    };
+    );
+  };
+  this.play = function(){
+    if(me.cardSelectionIsVisible && me.selectedCards.length > 0){
+      if(confirm('Etes-vous sûr de vouloir échanger ces ' + me.selectedCards.length + ' cartes')){
+        me.dropCards();
+        me.takeCards(me.selectedCards.length);
+        me.selectedCards.splice(0, me.selectedCards.length);
+        me.cardSelectionIsVisible = false;
+      }
+    } else {
+      me.playCards();
+    }
+  };
+  this.terminate = function() {
+    me.takeCards(me.removedCardsCount);
+  }
 }]);

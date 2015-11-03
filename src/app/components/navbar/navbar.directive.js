@@ -16,7 +16,8 @@
         onTackBabord : '&',
         onTackTribord : '&',
         onTrash : '&',
-        onPlay : '&'
+        onPlay : '&',
+        onTerminate: '&'
       },
       link : function(scope){
         scope.tackTemplateUrl = "popoverTackTemplate.html";
@@ -38,6 +39,9 @@
         scope.onPlayAction = function(){
           scope.onPlay();
         };
+        scope.onTerminateAction = function() {
+          scope.onTerminate();
+        }
       }
     };
     return directive;
