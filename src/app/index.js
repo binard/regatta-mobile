@@ -32,7 +32,7 @@ var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 
   });
 
 app.factory('socket', function (socketFactory) {
-  var myIoSocket = io.connect('http://192.168.1.59:8041');
+  var myIoSocket = io.connect('http://192.168.1.63:8041');
 
   var socket = socketFactory({
     ioSocket: myIoSocket

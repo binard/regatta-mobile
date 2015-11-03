@@ -8,6 +8,7 @@
   function ngCardPreviewDirective() {
     return {
       restrict: 'E',
+      replace : true,
       scope: {
         ngPushCard: '=',
         ngGetCardImg: '='
@@ -16,7 +17,7 @@
       link: function(scope, element, attrs) {
         scope.ngCards = [];
         scope.ngPushCard = ngPushCardFunction;
-        scope.clear = clearFuncion;
+        scope.clear = clearFunction;
 
         function ngPushCardFunction(data) {
           console.log('add card preview', data);
@@ -43,11 +44,11 @@
         }
 
         function clearFunction() {
-          scope.cards = [];
+          scope.ngCards = [];
         }
 
         function getLastCard() {
-          return scope.cards[scope.cards.length - 1];
+          return scope.ngCards[scope.ngCards.length - 1];
         }
 
         function hasOption(card, option) {

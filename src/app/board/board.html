@@ -1,31 +1,31 @@
 <div class="board" ng-controller="BoardCtrl as boardCtrl">
+  <ng-card-preview ng-push-card="boardCtrl.fnPreviewCard" ng-get-card-img="boardCtrl.getCurrentImage"></ng-card-preview>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 80"
-       style="height: 90%;width: 100%;">
+       style="height: 80%;width: 100%;">
 
     <g>
-      <rect ng-repeat="i in [6, 5, 4, 3, 2, 1, 0]" class="possibility"
-            height="10" width="5" x="0" ng-attr_y="{{ $index * 10 + 5 }}">
+      <rect ng-repeat="i in [6, 5, 4, 3, 2, 1, 0]" class="possibility" height="10" width="5" x="0" ng-attr_y="{{ $index * 10 + 5 }}" ng-class="boardCtrl.cardDirectionIsSelectable(i)" ng-click="boardCtrl.previewCard(i)">
       </rect>
     </g>
     <g>
-      <rect ng-repeat="i in [7, 8, 9, 10, 11]" class="possibility"
+      <rect ng-repeat="i in [7, 8, 9, 10, 11]" class="possibility" ng-class="boardCtrl.cardDirectionIsSelectable(i)" ng-click="boardCtrl.previewCard(i)"
             height="5" width="11" ng-attr_x="{{ 5 + $index * 11 }}" y="0">
       </rect>
     </g>
     <g>
-      <rect ng-repeat="i in [12, 13, 14, 15, 16, 17, 18]" class="possibility"
+      <rect ng-repeat="i in [12, 13, 14, 15, 16, 17, 18]" class="possibility" ng-class="boardCtrl.cardDirectionIsSelectable(i)" ng-click="boardCtrl.previewCard(i)"
             height="10" width="5" x="60" ng-attr_y="{{ $index * 10 + 5 }}">
       </rect>
     </g>
     <g>
-      <rect ng-repeat="i in [19, 20, 21, 22, 23]" class="possibility"
+      <rect ng-repeat="i in [19, 20, 21, 22, 23]" class="possibility" ng-class="boardCtrl.cardDirectionIsSelectable(i)" ng-click="boardCtrl.previewCard(i)"
             height="5" width="11" ng-attr_x="{{ 5 + $index * 11 }}" y="75">
       </rect>
     </g>
     <g ng-repeat="card in boardCtrl.My.cards" width="55" height="70" ng-show="boardCtrl.isVisible($index)">
       <image ng-click="boardCtrl.showNextCard()"
-             xlink:href="http://localhost/svg?svgfile=carte&card-un-gauche=display%3A%20block%3B"
-             x="5" y="5" width="55" height="70" preserveAspectRatio="none">
+             ng-href="{{boardCtrl.trustSrc(boardCtrl.getCurrentImage($index))}}"
+             xlink:href="" x="5" y="5" width="55" height="70" preserveAspectRatio="none">
       </image>
       <foreignObject width="55" height="70" x="5" y="5">
         <div ng-show="boardCtrl.cardSelectionIsVisible" xmlns="http://www.w3.org/1999/xhtml"
@@ -43,5 +43,4 @@
     <placeboatremote is-visible="boardCtrl.startRemoteIsVisible" player="boardCtrl.My" game-id="boardCtrl.gameId" is-begun="boardCtrl.isBegun" />
     <movemapremote is-visible="boardCtrl.moveMapRemoteIsVisible" game-id="boardCtrl.gameId" />
   </div>
-
 </div>
