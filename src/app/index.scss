@@ -225,6 +225,18 @@ select.color-selector{
   }
 }
 
+.card-preview {
+  height: 10%;
+  width: 100%;
+  img {
+    float: left;
+    margin-right: 2px;
+    height: 100%;
+    position: relative;
+    display: block;
+  }
+}
+
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */
 // injector
