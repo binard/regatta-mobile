@@ -1,8 +1,10 @@
 <div class="board" ng-controller="BoardCtrl as boardCtrl">
+  <toaster-container class="board-toaster"></toaster-container>
   <ng-card-preview ng-push-card="boardCtrl.fnPreviewCard" ng-get-card-img="boardCtrl.getCurrentImage"
     ng-game-id="boardCtrl.gameId" ng-player-name="boardCtrl.playerName"
     ng-play="boardCtrl.playCards" ng-removed-cards="boardCtrl.removedCardsCount">
   </ng-card-preview>
+
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 80"
        style="height: 80%;width: 100%;">
 

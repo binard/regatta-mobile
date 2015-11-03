@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('regattaMobile')
-.controller('BoardCtrl', ['$routeParams', '$location', '$sce', 'socket', function ($routeParams, $location, $sce, socket) {
-  this.trustSrc = function(src) {
-    return $sce.trustAsResourceUrl(src);
-  };
+.controller('BoardCtrl', ['$routeParams', '$location', '$sce', 'socket', 'toaster', function ($routeParams, $location, $sce, socket, toaster) {
+    this.trustSrc = function(src) {
+      return $sce.trustAsResourceUrl(src);
+    }
 
   var me = this;
   me.isBegun = false;
@@ -49,6 +49,7 @@ angular.module('regattaMobile')
       console.log("previewCard possbilityIndex : " + numPossibilty);
       me.fnPreviewCard({index : me.currentCardIndex, card : me.cards[me.currentCardIndex], possibility : numPossibilty});
     }
+    //this.pop();
   };
 
   function indexIsPossible(card, index){
@@ -158,4 +159,7 @@ angular.module('regattaMobile')
   this.terminate = function() {
     me.takeCards(me.removedCardsCount);
   }
+    this.pop = function(){
+      toaster.pop('success', "title", "text");
+    };
 }]);
