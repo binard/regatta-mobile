@@ -17,3 +17,20 @@
 	width: $value;
 	min-width: $value;
 }
+
+@mixin resetButtonStyle(){
+  border: none;
+  background: transparent;
+}
+
+@mixin regattaPrimaryButton($sizeButton, $sizeFont){
+  @include resetButtonStyle();
+  @include circle();
+  @include circleSize($sizeButton);
+  background-color: $bgButtonFlash;
+  z-index: 1000;
+  color: #fff;
+  font-size: $sizeFont;
+  text-transform: uppercase;
+  font-weight: bold;
+}

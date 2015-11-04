@@ -1,26 +1,21 @@
-<div class="content start-screen">
+<div class="container-fluid splashscreen start-screen">
 	<div class="header">
 		<h1>Paramètres de votre bateau</h1>
 	</div>
 	<div class="form">
 		<div class="form-group">
 			<input ng-model="playerName" type="text" class="form-control" placeholder="Nom" />
-		</div>		
+		</div>
 		<div class="form-group">
 			<input ng-model="number" type="numeric" class="form-control" placeholder="Numéro" />
 		</div>
 		<div class="form-group">
-			<select ng-model="color" class="color-selector form-control">
-			  <option value="" disabled selected class="placeholder">Couleur</option>
-			  <option value="#1F4788" class="blue">Bleue</option>
-			  <option value="#8F1D21" class="red">Rouge</option>
-			  <option value="#FFB61E" class="yellow">Jaune</option>
-			  <option value="#26A65B" class="green">Vert</option>
-			  <option value="#8E44AD" class="purple">Violet</option>
-			</select>		
+      <ul class="color-chooser">
+        <li ng-repeat="color in colors" ng-click="changeSelectedColor($index)" ng-class="selectedColor.name == color.name ? 'active' : ''" class="{{color.name}}"></li>
+      </ul>
 		</div>
-		<div class="form-group">
-			<button ng-click="validOptions()" class="btn btn-primary btn-block">Valider</button>
-		</div>				
+		<div class="valid-options">
+			<button ng-click="validOptions()" class="btn btn-primary btn-block btn-valid-options">ok</button>
+		</div>
 	</div>
 </div>

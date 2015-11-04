@@ -49,7 +49,7 @@ module.exports = function(options) {
       .pipe($.autoprefixer()).on('error', options.errorHandler('Autoprefixer'))
       .pipe($.sourcemaps.write())
       .pipe(cssFilter.restore())
-      .pipe(gulp.dest(options.tmp + '/serve/app/'))
-      .pipe(browserSync.reload({ stream: true }));
+      .pipe(gulp.dest(options.tmp + '/serve/app/'));
+      //.pipe(browserSync.reload({ stream: true }));
   });
 };
