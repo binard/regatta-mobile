@@ -33,7 +33,8 @@
              xlink:href="" x="5" y="5" width="55" height="70" preserveAspectRatio="none">
       </image>
       <foreignObject width="28" height="24" x="18.5" y="28" ng-show="boardCtrl.cardSelectionIsVisible" class="card-overlay">
-        <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }" ng-click="boardCtrl.selectCardToggle($index)">
+        <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }"
+                ng-click="boardCtrl.selectCardToggle($index)">
           <i class="fa fa-check"></i>
         </button>
       </foreignObject>
@@ -41,8 +42,14 @@
     </g>
   </svg>
   <div>
-    <actionnavbar on-start="boardCtrl.showStartRemote()" on-move-map="boardCtrl.showMoveMapRemote()" on-tack-babord="boardCtrl.tack(-90)" on-tack-tribord="boardCtrl.tack(90)" on-trash="boardCtrl.cardSelectionIsVisible = !boardCtrl.cardSelectionIsVisible" flag-is-visible="!boardCtrl.isBegun" on-play="boardCtrl.play()" on-terminate="boardCtrl.terminate()"/>
-    <placeboatremote is-visible="boardCtrl.startRemoteIsVisible" player="boardCtrl.My" game-id="boardCtrl.gameId" is-begun="boardCtrl.isBegun" />
+    <actionnavbar on-start="boardCtrl.showStartRemote()" on-move-map="boardCtrl.showMoveMapRemote()"
+                  on-tack-babord="boardCtrl.tack(-90)" on-tack-tribord="boardCtrl.tack(90)"
+                  on-trash="boardCtrl.cardSelectionIsVisible = !boardCtrl.cardSelectionIsVisible"
+                  flag-is-visible="!boardCtrl.My.started" on-play="boardCtrl.play()" on-terminate="boardCtrl.terminate()"/>
+
+    <placeboatremote is-visible="boardCtrl.startRemoteIsVisible" player="boardCtrl.My"
+                     game-id="boardCtrl.gameId" />
+
     <movemapremote is-visible="boardCtrl.moveMapRemoteIsVisible" game-id="boardCtrl.gameId" />
   </div>
 </div>

@@ -13,7 +13,6 @@
       templateUrl: 'app/components/placeboatremote/placeboatremote.html',
       scope: {
         isVisible : "=",
-        isBegun : "=",
         player: "=",
         gameId : "="
       },
@@ -69,7 +68,7 @@
               console.log(response);
               if(response.status == "ok"){
                 scope.isVisible = false;
-                scope.isBegun = true;
+                scope.player.started = true;
               }
             }
           );
