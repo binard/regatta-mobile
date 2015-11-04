@@ -13,7 +13,6 @@
       replace : true,
       scope: {
         ngPushCard: '=',
-        ngPlay: '=',
         ngGetCardImg: '=',
         ngGameId: '=',
         ngPlayerName: '=',
@@ -24,8 +23,8 @@
       link: function(scope) {
         scope.ngCards = [];
         scope.ngRemovedCards = 0;
-        scope.ngPushCard = ngPushCardFunction;
         scope.ngPlay = ngPlayFunction;
+        scope.ngPushCard = ngPushCardFunction;
         scope.pop = popFunction;
 
         function ngPushCardFunction(data) {

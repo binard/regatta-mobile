@@ -245,7 +245,7 @@ ul{
 		padding: 0;
 		margin: 0;
 		li {
-			border-radius : 100%;
+			border-radius : 4px;
 			border: 1px solid #fff;
 			color: #fff;
 			width : 40px;
@@ -260,6 +260,14 @@ ul{
         background: transparent;
       }
 		}
+    ul.uib-dropdown-menu {
+      border-radius: 4px;
+      li {
+        border: none;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+    }
 	}
 }
 
@@ -273,6 +281,7 @@ ul{
 }
 
 .card-preview {
+  background-color: $actionBarBgColor;
   height: 10%;
   width: 100%;
   img {

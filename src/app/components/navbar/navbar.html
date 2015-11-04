@@ -1,13 +1,24 @@
 <nav class="actionbar">
   <div>
     <ul class="actions">
-      <li ng-click="onFlagAction()" ng-show="flagIsVisible"><i class="fa fa-flag"></i></li>
-      <li ng-click="onMoveCrossAction()"><i class="fa fa-arrows"></i></li>
+      <li ng-click="onFlagAction()" ng-show="flagIsVisible">
+        <i class="fa fa-flag"></i>
+      </li>
+      <li ng-click="onMoveCrossAction()">
+        <i class="fa fa-arrows"></i>
+      </li>
       <li ng-show="!flagIsVisible">
-        <button class="fa fa-exchange" uib-popover-template="tackTemplateUrl" type="button"></button>
-      <li ng-click="onTrashAction()" ng-show="!flagIsVisible"><i class="fa fa-trash"></i></li>
-      <li ng-click="onPlayAction()"  ng-show="!flagIsVisible"><i class="fa fa-play"></i></li>
-      <li ng-click="onTerminateAction()"ng-show="!flagIsVisible"><i class="fa fa-forward"></i></li>
+        <button class="fa fa-exchange" uib-popover-template="popoverTackTemplate.html" type="button"></button>
+      </li>
+      <li ng-show="!flagIsVisible" uib-dropdown auto-open="outsideClick" class="dropup">
+        <button id="button-template-url" class="fa fa-bars" uib-dropdown-toggle></button>
+        <ul class="uib-dropdown-menu" template-url="popoverModePlayTemplate.html" aria-labelledby="button-template-url">
+
+        </ul>
+      </li>
+      <li ng-click="onPlayAction()" ng-show="!flagIsVisible">
+        <i class="fa fa-check"></i>
+      </li>
     </ul>
   </div>
 </nav>
@@ -17,4 +28,12 @@
     <button type="button" ng-click="onTackBabordAction()"><i class="fa fa-long-arrow-left"></i></button>
     <button type="button" ng-click="onTackTribordAction()"><i class="fa fa-long-arrow-right"></i></button>
   </div>
+</script>
+
+<script type="text/ng-template" id="popoverModePlayTemplate.html">
+  <ul class="uib-dropdown-menu" role="menu" aria-labelledby="button-template-url">
+    <li role="menuitem"><a href="#">Se déplacer</a></li>
+    <li role="menuitem"><a href="#">Se défausser</a></li>
+    <li role="menuitem"><a href="#">Piéger</a></li>
+  </ul>
 </script>

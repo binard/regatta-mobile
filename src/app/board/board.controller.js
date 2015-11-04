@@ -17,6 +17,7 @@
       me.My = {
         cards: []
       };
+      me.mode = 'move';
 
       socket.emit('my', function(response){
         console.log('my', response);
@@ -162,8 +163,6 @@
             me.selectedCards.splice(0, me.selectedCards.length);
             me.cardSelectionIsVisible = false;
           }
-        } else {
-          me.playCards();
         }
       };
 

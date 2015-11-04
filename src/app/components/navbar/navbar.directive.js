@@ -1,26 +1,27 @@
 (function() {
   'use strict';
 
+  angular
+    .module('regattaMobile')
+    .directive('actionnavbar', actionNavbar);
 
-
-  /** @ngInject */
   function actionNavbar() {
-
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
-        flagIsVisible : '=',
-        onStart : '&',
-        onMoveMap : '&',
-        onTackBabord : '&',
-        onTackTribord : '&',
-        onTrash : '&',
-        onPlay : '&',
+        flagIsVisible: '=',
+        onStart: '&',
+        onMoveMap: '&',
+        onTackBabord: '&',
+        onTackTribord: '&',
+        onTrash: '&',
+        onPlay: '&',
         onTerminate: '&'
       },
-      link : function(scope){
+      link : function(scope) {
         scope.tackTemplateUrl = "popoverTackTemplate.html";
+        scope.modePlayTemplateUrl = "modePlayTemplate.url";
         scope.onFlagAction = function(){
           scope.onStart();
         };
@@ -46,9 +47,4 @@
     };
     return directive;
   }
-
-    angular
-    .module('regattaMobile')
-    .directive('actionnavbar', actionNavbar);
-
 })();
