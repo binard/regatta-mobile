@@ -16,9 +16,8 @@
       me.gameId = $routeParams.id;
 
       socket.emit('my', function(response){
-        console.log('gamelaunched my', response);
+        console.log('my', response);
         me.My = response.data.player;
-        me.cards = me.My.cards;
         me.playerName = me.My.playerName;
         me.currentCardIndex = 0;
       });
@@ -26,7 +25,6 @@
       this.startRemoteIsVisible = false;
       this.moveMapRemoteIsVisible = false;
       this.cardSelectionIsVisible = false;
-      this.cards = [];
       this.selectedCards = [];
       this.currentCardIndex = 0;
       this.removedCardsCount = 0;
@@ -41,17 +39,17 @@
       };
 
       this.cardDirectionIsSelectable = function(numPossibilty){
-        if(me.cards.length > 0) {
-          return indexIsPossible(me.cards[me.currentCardIndex], numPossibilty) ? "card-selectable" : "";
+        if(me.My.cards.length > 0) {
+          return indexIsPossible(me.My.cards[me.currentCardIndex], numPossibilty) ? "card-selectable" : "";
         }
         return "";
       };
 
       this.previewCard = function(numPossibilty){
-        if(indexIsPossible(me.cards[me.currentCardIndex], numPossibilty)) {
-          console.log("previewCard card : " + me.cards[me.currentCardIndex]);
+        if(indexIsPossible(me.My.cards[me.currentCardIndex], numPossibilty)) {
+          console.log("previewCard card : " + me.My.cards[me.currentCardIndex]);
           console.log("previewCard possbilityIndex : " + numPossibilty);
-          me.fnPreviewCard({index : me.currentCardIndex, card : me.cards[me.currentCardIndex], possibility : numPossibilty});
+          me.fnPreviewCard({index : me.currentCardIndex, card : me.My.cards[me.currentCardIndex], possibility : numPossibilty});
         }
         //this.pop();
       };
@@ -147,7 +145,6 @@
             socket.emit('my', function(response){
               console.log(response);
               me.My = response.data.player;
-              me.cards = me.My.cards;
               me.removedCardsCount = 0;
             });
           }
