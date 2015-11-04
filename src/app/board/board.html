@@ -1,7 +1,7 @@
 <div class="board" ng-controller="BoardCtrl as boardCtrl">
   <toaster-container class="board-toaster"></toaster-container>
   <ng-card-preview ng-push-card="boardCtrl.fnPreviewCard" ng-get-card-img="boardCtrl.getCurrentImage"
-    ng-game-id="boardCtrl.gameId" ng-player-name="boardCtrl.playerName"
+    ng-game-id="boardCtrl.gameId" ng-player-name="boardCtrl.playerName" ng-have-played="boardCtrl.havePlayed"
     ng-play="boardCtrl.playCards" ng-removed-cards="boardCtrl.removedCardsCount">
   </ng-card-preview>
 
@@ -38,7 +38,6 @@
           <i class="fa fa-check"></i>
         </button>
       </foreignObject>
-      <!--rect height="20" width="22" y="35" x="28" style="stroke: white;fill: transparent;stroke-width: 1"></rect-->
     </g>
   </svg>
   <div>
