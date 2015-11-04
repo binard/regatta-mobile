@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="regattaMobile">
+<html ng-app="regattaMobile" ng-controller="MainCtrl as mainCtrl">
   <head>
     <meta charset="utf-8">
     <title>regattaMobile</title>
@@ -19,9 +19,9 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-    <script type="text/javascript" src="http://192.168.1.61/socket.io/socket.io.js" />
+    <script type="text/javascript" ng-src="mainCtrl.socketIoUrl()" src=""></script>
   </head>
   <body>
     <!--[if lt IE 10]>

@@ -5,9 +5,9 @@
     .module('regattaMobile')
     .controller('BoardCtrl', boardCtrlFunction);
 
-  boardCtrlFunction.$inject = ['$routeParams', '$location', '$sce', 'socket', 'toaster'];
+  boardCtrlFunction.$inject = ['CONFIG', '$routeParams', '$location', '$sce', 'socket', 'toaster'];
 
-  function boardCtrlFunction ($routeParams, $location, $sce, socket, toaster) {
+  function boardCtrlFunction (CONFIG, $routeParams, $location, $sce, socket, toaster) {
       this.trustSrc = function(src) {
         return $sce.trustAsResourceUrl(src);
       };
@@ -35,7 +35,7 @@
           paramStr += '&' + paramIndex + '=' + encodeURIComponent(me.My.cards[index].svgParams[paramIndex]);
         }
 
-        return 'http://192.168.1.61/svg?svgfile=carte' + paramStr;
+        return CONFIG.serverUrl + '/svg?svgfile=carte' + paramStr;
       };
 
       this.cardDirectionIsSelectable = function(numPossibilty){

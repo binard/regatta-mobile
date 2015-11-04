@@ -31,12 +31,12 @@ var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 
       });
   });
 
-app.factory('socket', function (socketFactory) {
-  var myIoSocket = io.connect('http://192.168.1.61');
+app.factory('socket', ['CONFIG', 'socketFactory', function (CONFIG, socketFactory) {
+  var myIoSocket = io.connect(CONFIG.serverUrl);
 
   var socket = socketFactory({
     ioSocket: myIoSocket
   });
 
   return socket;
-});
+}]);
