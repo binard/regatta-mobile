@@ -18,6 +18,7 @@
         ngGameId: '=',
         ngPlayerName: '=',
         ngRemovedCards: '=',
+        ngHavePlayed: '='
       },
       templateUrl: '/app/components/cardpreview/cardpreview.directive.html',
       link: function(scope) {
@@ -59,8 +60,6 @@
         function ngPlayFunction() {
           if (scope.ngCards.length > 0) {
             playRecursively();
-
-            scope.ngCards = [];
           } else {
             alert('L\'option nuage doit être jouée');
           }
@@ -123,6 +122,7 @@
         }
 
         function playRecursively() {
+          console.log(scope.ngCards);
           var card = getFirstCard();
 
           if (!card) {
@@ -133,20 +133,26 @@
             var secondCloud = getCardAt(1);
 
             socket.emit(
-              'movecloud', {
+              'movecloud',
+              {
                 gameId: scope.ngGameId,
                 playerName: scope.ngPlayerName,
                 cardIndex: card.index,
                 cardPossibilities: [card.possibility, secondCloud.possibility]
               },
               function(data) {
+                console.log('movecloud', data);
                 if (data.status == 'ok') {
                   scope.ngCards.splice(0, 2);
-                  scope.ngRemovedCards+=2;
+                  scope.ngRemovedCards++;
+
+                  scope.ngHavePlayed(card.index);
+                  reevaluate(card.index);
                 }
               }
             );
           } else if (hasOption(card.card, 'steering-wheel')){
+            console.log(scope.ngCards);
             socket.emit(
               'movesteeringwheel',
               {
@@ -156,8 +162,16 @@
                 cardPossibility: card.possibility
               },
               function(data) {
+                console.log('movesteeringwheel', data);
                 if (data.status == 'ok') {
+                  console.log(scope.ngCards);
+                  scope.ngCards.splice(0, 1);
                   scope.ngRemovedCards++;
+                  console.log(scope.ngCards);
+
+                  scope.ngHavePlayed(card.index);
+                  reevaluate(card.index);
+
                   playRecursively();
                 }
               }
@@ -172,11 +186,24 @@
                 cardPossibility: card.possibility
               },
               function(data) {
+                console.log('move', data);
                 if (data.status == 'ok') {
+                  scope.ngCards.splice(0, 1);
                   scope.ngRemovedCards++;
+
+                  scope.ngHavePlayed(card.index);
+                  reevaluate(card.index);
                 }
               }
             );
+          }
+        }
+
+        function reevaluate(indexPlayed) {
+          for (var i in scope.ngCards) {
+            if (scope.ngCards[i].index >= indexPlayed) {
+              scope.ngCards[i].index--;
+            }
           }
         }
       }

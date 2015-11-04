@@ -14,6 +14,9 @@
 
       var me = this;
       me.gameId = $routeParams.id;
+      me.My = {
+        cards: []
+      };
 
       socket.emit('my', function(response){
         console.log('my', response);
@@ -68,7 +71,7 @@
 
       this.showNextCard = function() {
         console.log("showNextCard");
-        me.currentCardIndex = ++me.currentCardIndex % 5;
+        me.currentCardIndex = ++me.currentCardIndex % me.My.cards.length;
       };
 
       this.isVisible = function(index) {
@@ -166,6 +169,11 @@
 
       this.terminate = function() {
         me.takeCards(me.removedCardsCount);
+      };
+
+      this.havePlayed  = function(indexPlayed) {
+        me.currentCardIndex = 0;
+        me.My.cards.splice(indexPlayed, 1);
       };
 
       this.pop = function(){
