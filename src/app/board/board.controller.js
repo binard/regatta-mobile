@@ -146,11 +146,13 @@
           },
           function(data) {
             console.log('takecard', data);
-            socket.emit('my', function(response){
-              console.log(response);
-              me.My = response.data.player;
-              me.removedCardsCount = 0;
-            });
+            if (data.status == 'ok') {
+              socket.emit('my', function(response){
+                console.log(response);
+                me.My = response.data.player;
+                me.removedCardsCount = 0;
+              });
+            }
           }
         );
       };
