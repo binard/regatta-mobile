@@ -1,4 +1,7 @@
 <div class="card-preview" ng-click="pop()">
   <img class="card" ng-repeat="card in ngCards" ng-src="{{ngGetCardImg(card.index)}}" />
-  <button class="fa fa-play pull-right" type="button" ng-click="ngPlay()"></button>
+  <button class="pull-right mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored main-valid-button"
+          type="button" ng-click="ngPlay()" style="margin-top: 0.4%;" ng-hide="!ngCards.length">
+    <i class="fa fa-play "></i>
+  </button>
 </div>
