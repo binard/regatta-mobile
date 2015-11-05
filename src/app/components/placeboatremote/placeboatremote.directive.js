@@ -9,6 +9,7 @@
   function placeBoatRemote(socket) {
 
     var directive = {
+      replace: true,
       restrict: 'E',
       templateUrl: 'app/components/placeboatremote/placeboatremote.html',
       scope: {
@@ -62,7 +63,7 @@
             'confirmplaceonstart',
             {
               'playerName': scope.player.playerName,
-              'gameId': scope.gameId,
+              'gameId': scope.gameId
             },
             function(response) {
               console.log(response);

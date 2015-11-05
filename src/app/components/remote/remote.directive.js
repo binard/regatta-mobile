@@ -3,7 +3,7 @@
 
   /** @ngInject */
   function remote() {
-    
+
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/remote/remote.html',
@@ -50,7 +50,7 @@
         },
         scope.onValidButton = function() {
           scope.onValid();
-        },        
+        },
         scope.closeRemote = function() {
           scope.isVisible = false;
         },

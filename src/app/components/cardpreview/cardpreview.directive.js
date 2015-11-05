@@ -19,7 +19,7 @@
         ngRemovedCards: '=',
         ngHavePlayed: '='
       },
-      templateUrl: '/app/components/cardpreview/cardpreview.directive.html',
+      templateUrl: 'app/components/cardpreview/cardpreview.directive.html',
       link: function(scope) {
         scope.ngCards = [];
         scope.ngRemovedCards = 0;

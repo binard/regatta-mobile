@@ -7,16 +7,19 @@
       <li ng-click="onMoveCrossAction()">
         <i class="fa fa-arrows"></i>
       </li>
-      <li ng-show="!flagIsVisible">
-        <button class="fa fa-exchange" uib-popover-template="popoverTackTemplate.html" type="button"></button>
+      <li ng-show="!flagIsVisible" uib-dropdown auto-open="outsideClick" class="dropup">
+        <button class="fa fa-exchange" uib-dropdown-toggle></button>
+        <ul class="uib-dropdown-menu" template-url="popoverTackTemplate.html" aria-labelledby="button-template-url">
+
+        </ul>
       </li>
       <li ng-show="!flagIsVisible" uib-dropdown auto-open="outsideClick" class="dropup">
-        <button id="button-template-url" class="fa fa-bars" uib-dropdown-toggle></button>
+        <button class="fa fa-bars" uib-dropdown-toggle></button>
         <ul class="uib-dropdown-menu" template-url="popoverModePlayTemplate.html" aria-labelledby="button-template-url">
 
         </ul>
       </li>
-      <li ng-click="onPlayAction()" ng-show="!flagIsVisible">
+      <li ng-click="onTerminateAction()" ng-show="!flagIsVisible">
         <i class="fa fa-check"></i>
       </li>
     </ul>
@@ -24,16 +27,24 @@
 </nav>
 
 <script type="text/ng-template" id="popoverTackTemplate.html">
-  <div class="tackbutton">
-    <button type="button" ng-click="onTackBabordAction()"><i class="fa fa-long-arrow-left"></i></button>
-    <button type="button" ng-click="onTackTribordAction()"><i class="fa fa-long-arrow-right"></i></button>
-  </div>
+  <ul class="uib-dropdown-menu" role="menu" aria-labelledby="button-template-url">
+    <li role="menuitem">
+      <a ng-click="onTackBabordAction()">
+        <i class="fa fa-long-arrow-left"></i>Virer à gauche
+      </a>
+    </li>
+    <li role="menuitem">
+      <a ng-click="onTackTribordAction()">
+        <i class="fa fa-long-arrow-right"></i>Virer à droite
+      </a>
+    </li>
+  </ul>
 </script>
 
 <script type="text/ng-template" id="popoverModePlayTemplate.html">
   <ul class="uib-dropdown-menu" role="menu" aria-labelledby="button-template-url">
-    <li role="menuitem"><a href="#">Se déplacer</a></li>
-    <li role="menuitem"><a href="#">Se défausser</a></li>
-    <li role="menuitem"><a href="#">Piéger</a></li>
+    <li role="menuitem"><a href="#"><i class="fa fa-clone"></i>Se déplacer</a></li>
+    <li role="menuitem"><a href="#"><i class="fa fa-trash"></i>Se défausser</a></li>
+    <li role="menuitem"><a href="#"><i class="fa fa-sun-o"></i>Piéger</a></li>
   </ul>
 </script>

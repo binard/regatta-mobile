@@ -37,7 +37,7 @@ angular.module('regattaMobile')
   			socket.emit('joingame', {
   							  gameId : $scope.gameId,
   							  playerName: $scope.playerName,
-  							  color: $scope.selectedColor,
+  							  color: $scope.selectedColor.hexa,
   							  number: $scope.number
   							}, function (response) {
                   console.log("joingame", response);

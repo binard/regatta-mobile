@@ -10,6 +10,7 @@
 
     var directive = {
       restrict: 'E',
+      replace: true,
       templateUrl: 'app/components/movemapremote/movemapremote.html',
       scope: {
         player : "=",

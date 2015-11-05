@@ -4,6 +4,6 @@
   angular
     .module('regattaMobile')
     .constant('CONFIG', {
-      serverUrl : 'http://localhost'
+      serverUrl : 'http://192.168.1.61'
     });
 })();

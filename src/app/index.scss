@@ -244,7 +244,7 @@ ul{
 		justify-content: center;
 		padding: 0;
 		margin: 0;
-		li {
+		> li {
 			border-radius : 4px;
 			border: 1px solid #fff;
 			color: #fff;
@@ -266,6 +266,9 @@ ul{
         border: none;
         text-transform: uppercase;
         font-size: 16px;
+        i {
+          padding-right: 5px;
+        }
       }
     }
 	}
