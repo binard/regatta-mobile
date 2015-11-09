@@ -287,12 +287,28 @@ ul{
   background-color: $primaryColor;
   height: 10%;
   width: 100%;
-  img {
-    float: left;
-    margin-right: 2px;
+  display: flex;
+  justify-content: center;
+  > div {
     height: 100%;
-    position: relative;
     display: block;
+    img {
+      margin-right: 2px;
+      height: 100%;
+      position: relative;
+      display: block;
+
+      &.current-card {
+        border: solid 3px white;
+      }
+
+      &.in-preview {
+        opacity: 0.5;
+      }
+    }
+    span {
+
+    }
   }
 }
 
