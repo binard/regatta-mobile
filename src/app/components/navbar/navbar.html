@@ -1,10 +1,10 @@
 <nav class="actionbar">
   <div>
     <ul class="actions">
-      <li ng-click="onFlagAction()" ng-show="flagIsVisible">
+      <li hm-tap="onFlagAction()" ng-show="flagIsVisible">
         <i class="fa fa-flag"></i>
       </li>
-      <li ng-click="onMoveCrossAction()">
+      <li hm-tap="onMoveCrossAction()">
         <i class="fa fa-arrows"></i>
       </li>
       <li ng-show="!flagIsVisible" uib-dropdown auto-open="outsideClick" class="dropup">
@@ -22,7 +22,7 @@
       <li ng-show="clearIsVisible" ng-click="onClearPreview()">
         <i class="fa fa-times"></i>
       </li>
-      <li ng-click="onTerminateAction()" ng-show="!flagIsVisible">
+      <li hm-tap="onTerminateAction()" ng-show="!flagIsVisible">
         <i class="fa fa-check"></i>
       </li>
     </ul>
@@ -32,12 +32,12 @@
 <script type="text/ng-template" id="popoverTackTemplate.html">
   <ul class="uib-dropdown-menu" role="menu" aria-labelledby="button-template-url">
     <li role="menuitem">
-      <a ng-click="onTackBabordAction()">
+      <a hm-tap="onTackBabordAction()">
         <i class="fa fa-long-arrow-left"></i>Virer à gauche
       </a>
     </li>
     <li role="menuitem">
-      <a ng-click="onTackTribordAction()">
+      <a hm-tap="onTackTribordAction()">
         <i class="fa fa-long-arrow-right"></i>Virer à droite
       </a>
     </li>
@@ -46,8 +46,8 @@
 
 <script type="text/ng-template" id="popoverModePlayTemplate.html">
   <ul class="uib-dropdown-menu" role="menu" aria-labelledby="button-template-url">
-    <li role="menuitem"><a ng-click=""><i class="fa fa-clone"></i>Se déplacer</a></li>
-    <li role="menuitem"><a ng-click="onTrashAction()"><i class="fa fa-trash"></i>Se défausser</a></li>
-    <li role="menuitem"><a ng-click=""><i class="fa fa-sun-o"></i>Piéger</a></li>
+    <li role="menuitem"><a hm-tap=""><i class="fa fa-clone"></i>Se déplacer</a></li>
+    <li role="menuitem"><a hm-tap="onTrashAction()"><i class="fa fa-trash"></i>Se défausser</a></li>
+    <li role="menuitem"><a hm-tap=""><i class="fa fa-sun-o"></i>Piéger</a></li>
   </ul>
 </script>

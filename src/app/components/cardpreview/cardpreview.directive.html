@@ -1,7 +1,7 @@
-<div class="card-preview" ng-click="pop()">
+<div class="card-preview">
   <div ng-repeat="card in ngCards" class="card-preview-item">
     <img class="card" ng-src="{{ ngGetImageFunction(card) }}"
-         ng-class="{'current-card': ngCurrentCard == $index, 'in-preview': card.preview}"/>
+         ng-class="{'current-card': ngCurrentCard == card, 'in-preview': card.preview}"/>
     <div ng-show="card.preview"><span>{{ card.previewNumber }}</span></div>
   </div>
 </div>

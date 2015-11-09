@@ -213,7 +213,9 @@ ul{
     stroke: #ccc;
     stroke-width: 0.1;
     &.card-selectable{
-      fill: #aaa;
+      fill: $primaryColorWithTransparence;
+      stroke: $primaryColor;
+      stroke-width: 0.6;
     }
   }
 .card-overlay {

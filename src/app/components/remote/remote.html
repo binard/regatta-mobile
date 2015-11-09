@@ -1,28 +1,28 @@
 <div class="movepad-container" ng-show="isVisible">
-	<a class="closebutton" ng-click="closeRemote()"><i class="fa fa-times"></i></a>
+	<a class="closebutton" hm-tap="closeRemote()"><i class="fa fa-times"></i></a>
 	<div class="movepad">
 		<div class="cmd top">
-			<span class="material-icons kb-button"  ng-click="onRotateLeftButton()" ng-show="isButtonVisible('on-rotate-left');">rotate_left</span>
-			<span class="material-icons kb-button"  ng-click="onRotateRightButton()" ng-show="isButtonVisible('on-rotate-right');">rotate_right</span>
+			<span class="material-icons kb-button"  hm-tap="onRotateLeftButton()" ng-show="isButtonVisible('on-rotate-left');">rotate_left</span>
+			<span class="material-icons kb-button"  hm-tap="onRotateRightButton()" ng-show="isButtonVisible('on-rotate-right');">rotate_right</span>
 		</div>
-		<div class="arrow top" ng-click="onTopButton()">
+		<div class="arrow top" hm-press="onTopButton()" hm-pressup="onStop()">
 			<span class="material-icons kb-button arrow" ng-show="isButtonVisible('on-top');">keyboard_arrow_up</span>
 		</div>
 		<div class="middle">
-			<div class="material-icons kb-button arrow left"  ng-click="onLeftButton()" ng-show="isButtonVisible('on-left');">keyboard_arrow_left</div>
-			<div class="material-icons  kb-button arrow right"  ng-click="onRightButton()" ng-show="isButtonVisible('on-right');">keyboard_arrow_right</div>
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored main-valid-button" ng-click="onValidButton()" ng-show="isButtonVisible('on-valid');">
+			<div class="material-icons kb-button arrow left"  hm-press="onLeftButton()" hm-pressup="onStop()" ng-show="isButtonVisible('on-left');">keyboard_arrow_left</div>
+			<div class="material-icons  kb-button arrow right"  hm-press="onRightButton()" hm-pressup="onStop()" ng-show="isButtonVisible('on-right');">keyboard_arrow_right</div>
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored main-valid-button" hm-tap="onValidButton()" ng-show="isButtonVisible('on-valid');">
 				<i class="material-icons">flag</i>
 			</button>
 		</div>
 		<div class="arrow bottom">
-			<span class="material-icons kb-button arrow" ng-click="onBottomButton()" ng-show="isButtonVisible('on-bottom');">keyboard_arrow_down</span>
+			<span class="material-icons kb-button arrow" hm-press="onBottomButton()" hm-pressup="onStop()" ng-show="isButtonVisible('on-bottom');">keyboard_arrow_down</span>
 		</div>
 		<div class="cmd bottom">
-			<span class="material-icons kb-button"  ng-click="onReseteButton()" ng-show="isButtonVisible('on-resete');">cached</span>
+			<span class="material-icons kb-button"  hm-tap="onReseteButton()" ng-show="isButtonVisible('on-resete');">cached</span>
 			<div class="zoom">
-				<span class="material-icons kb-button"  ng-click="onZoomInButton()" ng-show="isButtonVisible('on-zoom-in');">zoom_in</span>
-				<span class="material-icons kb-button"  ng-click="onZoomOutButton()" ng-show="isButtonVisible('on-zoom-out');">zoom_out</span>
+				<span class="material-icons kb-button"  hm-press="onZoomInButton()" hm-pressup="onStop()" ng-show="isButtonVisible('on-zoom-in');">zoom_in</span>
+				<span class="material-icons kb-button"  hm-press="onZoomOutButton()" hm-pressup="onStop()" ng-show="isButtonVisible('on-zoom-out');">zoom_out</span>
 			</div>
 		</div>
 	</div>

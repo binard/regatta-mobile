@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'btford.socket-io', 'toaster'])
+var app = angular.module('regattaMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'btford.socket-io', 'hmTouchEvents', 'toaster'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

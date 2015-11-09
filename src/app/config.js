@@ -4,6 +4,6 @@
   angular
     .module('regattaMobile')
     .constant('CONFIG', {
-      serverUrl : 'http://localhost:8041'
+      serverUrl : 'http://192.168.1.12:8041'
     });
 })();

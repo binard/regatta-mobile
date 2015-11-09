@@ -20,19 +20,19 @@
       link : function(scope, $element, attrs){
         scope.moveLeft = function() {
           console.log('moveLeft');
-          movingView(0, 0, 10, 0);
+          movingView(0, 0, 0, 10);
         };
         scope.moveRight = function() {
           console.log('moveRight');
-          movingView(0, 0, 0, 10);
+          movingView(0, 0, 10, 0);
         };
         scope.moveTop = function() {
           console.log('moveTop');
-          movingView(10, 0, 0, 0);
+          movingView(0, 10, 0, 0);
         };
         scope.moveBottom = function() {
           console.log('moveBottom');
-          movingView(0, 10, 0, 0);
+          movingView(10, 0, 0, 0);
         };
         scope.reset = function() {
           reinitZoomAndMove();

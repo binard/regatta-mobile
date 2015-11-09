@@ -93,6 +93,11 @@
         me.currentCard = me.My.cards[currentIndex];
       };
 
+    this.showPreviousCard = function(index) {
+      var currentIndex = index !== 0 ? --index : me.My.cards.length - 1;
+      me.currentCard = me.My.cards[currentIndex];
+    };
+
       this.showStartRemote = function() {
         me.startRemoteIsVisible = ! me.startRemoteIsVisible;
         me.moveMapRemoteIsVisible = false;
