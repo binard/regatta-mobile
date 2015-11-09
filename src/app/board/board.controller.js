@@ -57,7 +57,7 @@
       };
 
       this.previewCard = function(numPossibilty){
-        if(me.indexIsPossible(me.currentCard, numPossibilty)) {
+        if(me.indexIsPossible(me.currentCard, numPossibilty) && !me.currentCard.preview) {
           me.currentCard.preview = true;
           me.currentCard.previewNumber = parseInt(me.previewNumber);
           me.previewNumber++;
@@ -71,6 +71,9 @@
             me.My.cards[cardIndex].previewNumber = 0;
           }
         }
+
+
+        me.previewNumber = 0;
       };
 
       this.indexIsPossible = function(card, index){
