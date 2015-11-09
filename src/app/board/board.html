@@ -35,6 +35,11 @@
                ng-href="{{boardCtrl.trustSrc(boardCtrl.getCurrentImage(card))}}"
                xlink:href="" x="5" y="5" width="55" height="70" preserveAspectRatio="none">
         </image>
+        <foreignObject width="16" height="2" x="24.5" y="64">
+          <ul class="card-bullets">
+            <li ng-repeat="card in boardCtrl.My.cards" ng-class="{'current' : boardCtrl.currentCard == card}"></li>
+          </ul>
+        </foreignObject>
         <foreignObject width="28" height="24" x="18.5" y="28" ng-show="boardCtrl.cardSelectionIsVisible" class="card-overlay">
           <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }"
                   ng-click="boardCtrl.selectCardToggle($index)">

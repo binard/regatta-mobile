@@ -327,6 +327,25 @@ ul{
     }
   }
 }
+.card-bullets{
+  overflow: hidden;
+  display: block;
+  padding : 0;
+  margin: 0;
+  li{
+    height: 2px;
+    width: 2px;
+    background-color: $overlayBgColor;
+    margin-left: 1px;
+    float: left;
+    &:first-child{
+      margin-left : 0;
+    }
+    &.current{
+      background-color: #333333;
+    }
+  }
+}
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */
