@@ -5,3 +5,4 @@ bower_components/
 dist/
 .idea/*
 src/app/config.js
+app/index.html
