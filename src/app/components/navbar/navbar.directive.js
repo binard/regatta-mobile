@@ -11,12 +11,14 @@
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
         flagIsVisible: '=',
+        clearIsVisible: '=',
         onStart: '&',
         onMoveMap: '&',
         onTackBabord: '&',
         onTackTribord: '&',
         onTrash: '&',
         onPlay: '&',
+        onClearPreview: '&',
         onTerminate: '&'
       },
       link : function(scope) {

@@ -14,7 +14,7 @@
       scope: {
         ngCards: '=',
         ngGetImageFunction: '=',
-        ngCurrentIndex: '='
+        ngCurrentCard: '='
       },
       templateUrl: 'app/components/cardpreview/cardpreview.directive.html',
       link: function(scope) {

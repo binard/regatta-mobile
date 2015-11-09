@@ -31,37 +31,49 @@
       this.moveMapRemoteIsVisible = false;
       this.cardSelectionIsVisible = false;
       this.selectedCards = [];
-      this.currentCardIndex = 0;
+      this.currentCard = me.My.cards[0];
       this.removedCardsCount = 0;
       this.previewNumber = 0;
 
-      this.getCurrentImage = function(index){
+      this.getCurrentImage = function(card){
         var paramStr = '';
-        for (var paramIndex in me.My.cards[index].svgParams) {
-          paramStr += '&' + paramIndex + '=' + encodeURIComponent(me.My.cards[index].svgParams[paramIndex]);
+        for (var paramIndex in card.svgParams) {
+          paramStr += '&' + paramIndex + '=' + encodeURIComponent(card.svgParams[paramIndex]);
         }
 
         return CONFIG.serverUrl + '/svg?svgfile=carte' + paramStr;
       };
 
-      this.cardDirectionIsSelectable = function(numPossibilty){
-        if(me.My.cards.length > 0) {
-          return indexIsPossible(me.My.cards[me.currentCardIndex], numPossibilty) ? "card-selectable" : "";
+      this.clearIsVisible = function() {
+        var clearIsVisible = false;
+        for (var cardIndex in me.My.cards) {
+          if (me.My.cards[cardIndex].preview == true) {
+            clearIsVisible = true;
+            break;
+          }
         }
-        return "";
+
+        return clearIsVisible;
       };
 
       this.previewCard = function(numPossibilty){
-        if(indexIsPossible(me.My.cards[me.currentCardIndex], numPossibilty)) {
-          me.My.cards[me.currentCardIndex].preview = true;
-          me.My.cards[me.currentCardIndex].previewNumber = me.previewNumber;
+        if(me.indexIsPossible(me.currentCard, numPossibilty)) {
+          me.currentCard.preview = true;
+          me.currentCard.previewNumber = parseInt(me.previewNumber);
           me.previewNumber++;
-          console.log('coucou');
         }
-        //this.pop();
       };
 
-      function indexIsPossible(card, index){
+      this.clearPreview = function() {
+        for (var cardIndex in me.My.cards) {
+          if (me.My.cards[cardIndex].preview) {
+            me.My.cards[cardIndex].preview = false;
+            me.My.cards[cardIndex].previewNumber = 0;
+          }
+        }
+      };
+
+      this.indexIsPossible = function(card, index){
         var isPossibility = false;
         for(var i=0; i < card.possibilities.length; i++){
           if(card.possibilities[i].possibilityIndex == index)
@@ -71,11 +83,11 @@
           }
         }
         return isPossibility;
-      }
+      };
 
-      this.showNextCard = function() {
-        console.log("showNextCard");
-        me.currentCardIndex = ++me.currentCardIndex % me.My.cards.length;
+      this.showNextCard = function(index) {
+        var currentIndex = ++index % me.My.cards.length;
+        me.currentCard = me.My.cards[currentIndex];
       };
 
       this.showStartRemote = function() {
@@ -172,7 +184,7 @@
       };
 
       this.havePlayed  = function(indexPlayed) {
-        me.currentCardIndex = 0;
+        me.currentCard = null;
         me.My.cards.splice(indexPlayed, 1);
       };
 
