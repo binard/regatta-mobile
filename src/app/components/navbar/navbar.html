@@ -46,8 +46,14 @@
 
 <script type="text/ng-template" id="popoverModePlayTemplate.html">
   <ul class="uib-dropdown-menu" role="menu" aria-labelledby="button-template-url">
-    <li role="menuitem"><a hm-tap=""><i class="fa fa-clone"></i>Se déplacer</a></li>
-    <li role="menuitem"><a hm-tap="onTrashAction()"><i class="fa fa-trash"></i>Se défausser</a></li>
-    <li role="menuitem"><a hm-tap=""><i class="fa fa-sun-o"></i>Piéger</a></li>
+    <li role="menuitem" ng-hide="!playIsVisible" ng-class="{'active': mode == 'play'}">
+      <a hm-tap="onPlayAction()"><i class="fa fa-clone"></i>Se déplacer</a>
+    </li>
+    <li role="menuitem" ng-hide="!trashIsVisible" ng-class="{'active': mode == 'trash'}">
+      <a hm-tap="onTrashAction()"><i class="fa fa-trash"></i>Se défausser</a>
+    </li>
+    <li role="menuitem" ng-hide="!trapIsVisible" ng-class="{'active': mode == 'trap'}">
+      <a hm-tap="onTrapAction()"><i class="fa fa-sun-o"></i>Piéger</a>
+    </li>
   </ul>
 </script>

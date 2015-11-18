@@ -12,16 +12,33 @@
       scope: {
         flagIsVisible: '=',
         clearIsVisible: '=',
+        trapIsVisible: '=',
+        trashIsVisible: '=',
+        playIsVisible: '=',
         onStart: '&',
         onMoveMap: '&',
         onTackBabord: '&',
         onTackTribord: '&',
         onTrash: '&',
         onPlay: '&',
+        onTrap: '&',
         onClearPreview: '&',
-        onTerminate: '&'
+        mode: '='
       },
       link : function(scope) {
+        var currentAction = scope.onPlay;
+
+        scope.$watch('mode', function(newValue) {
+          console.log(newValue);
+          if (newValue == 'play') {
+            scope.onPlayAction();
+          } else if (newValue == 'trash') {
+            scope.onTrashAction();
+          } else if (newValue == 'trap') {
+            scope.onTrapAction();
+          }
+        });
+
         scope.tackTemplateUrl = "popoverTackTemplate.html";
         scope.modePlayTemplateUrl = "modePlayTemplate.url";
         scope.onFlagAction = function(){
@@ -37,13 +54,25 @@
           scope.onTackTribord();
         };
         scope.onTrashAction = function(){
-          scope.onTrash();
+          if (scope.trashIsVisible) {
+            scope.mode = 'trash';
+            currentAction = scope.onTrash;
+          }
         };
         scope.onPlayAction = function(){
-          scope.onPlay();
+          if (scope.playIsVisible) {
+            scope.mode = 'play';
+            currentAction = scope.onPlay;
+          }
+        };
+        scope.onTrapAction = function() {
+          if (scope.trapIsVisible) {
+            scope.mode = 'trap';
+            currentAction = scope.onTrap;
+          }
         };
         scope.onTerminateAction = function() {
-          scope.onTerminate();
+          currentAction();
         }
       }
     };
