@@ -4,7 +4,7 @@
   angular
     .module('regattaMobile')
     .controller('BoardCtrl', boardCtrlFunction);
-
+  
   boardCtrlFunction.$inject = ['CONFIG', '$routeParams', '$sce', 'socket', 'toaster'];
 
   function boardCtrlFunction (CONFIG, $routeParams, $sce, socket, toaster) {

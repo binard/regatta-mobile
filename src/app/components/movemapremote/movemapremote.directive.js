@@ -27,7 +27,7 @@
           movingView(0, 0, 10, 0);
         };
         scope.moveTop = function() {
-          console.log('moveTop');
+          console.log('coyeux');
           movingView(0, 10, 0, 0);
         };
         scope.moveBottom = function() {

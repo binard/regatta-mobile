@@ -153,57 +153,6 @@ ul{
 		cursor: pointer;
 	}
 }
-
-.movepad{
-	width: 90%;
-	.cmd.top{
-		.kb-button{
-			font-size: 60px;
-		}
-		display: flex;
-		justify-content: space-between;
-	}
-	.cmd.bottom{
-		.kb-button{
-			font-size: 60px;
-		}
-		display: flex;
-		justify-content: space-between;
-	}
-	.arrow {
-		font-size : 84px;
-	}
-	.arrow.top,
-	.arrow.bottom {
-		text-align: center;
-		clear: both;
-	}
-	.arrow.left{
-		float: left;
-	}
-	.arrow.right{
-		float: right;
-	}
-	.middle{
-		overflow: hidden;
-		margin : 120px 0;
-		text-align: center;
-	}
-	.main-valid-button{
-		@include circleSize(84px);
-		font-size: 42px;
-
-	}
-	.kb-button{
-		@include circle;
-		background-color: $padArrowHover;
-		cursor: pointer;
-	}
-	.kb-button:hover,
-	.kb-button:active{
-		opacity: 0.8;
-	}
-}
 .board {
   position: fixed;
 	height: 100%;
@@ -345,6 +294,128 @@ ul{
     }
     &.current{
       background-color: #333333;
+    }
+  }
+}
+
+.movepad-actions{
+  *{box-sizing: border-box}
+  figure{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin: 40px auto;
+    overflow: hidden;
+    transform: rotate(45deg)
+  }
+  .btn-mp {
+    width: 123px;
+    height: 125px;
+    position: relative;
+    float: left;
+    background: $bgButtonFlash;
+    transform-origin: 100% 100%;
+    transition: background .3s ease;
+  }
+
+  .btn-mp:hover{cursor: pointer; background: #fff;}
+
+  .btn-mp:nth-of-type(2) {
+    right: 0;
+  }
+
+  .btn-mp:nth-of-type(3) {
+    bottom: 0;
+    left: 0;
+  }
+
+  .btn-mp:last-of-type {
+    right: 0;
+    bottom: 0;
+  }
+
+  figure figcaption{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: $bgButtonFlash;
+    text-align: center;
+    line-height: 120px;
+    margin: -60px 0 0 -60px;
+    transform: rotate(-45deg);
+    background-color: #fff;
+    font-size: 50px;
+  }
+  .btn-mp:before{
+    content:'';
+    position: absolute;
+    border-left: 32px solid transparent;
+    border-right: 32px solid transparent;
+    border-bottom: 32px solid rgb(255, 255, 255);
+  }
+  .btn-mp:hover:before{
+    content:'';
+    position: absolute;
+    border-left: 32px solid transparent;
+    border-right: 32px solid transparent;
+    border-bottom: 32px solid $bgButtonFlash;
+  }
+  .btn-mp:first-of-type:before {
+    top: 44px;
+    left: 24px;
+    transform: rotate(-45deg);
+  }
+  .btn-mp:nth-of-type(2):before {
+    top: 40px;
+    left: 32px;
+    transform: rotate(45deg);
+  }
+  .btn-mp:nth-of-type(3):before {
+    top: 48px;
+    left: 26px;
+    transform: rotate(-135deg);
+  }
+  .btn-mp:last-of-type:before {
+    top: 48px;
+    left: 32px;
+    transform: rotate(135deg);
+  }
+  .mp-action{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .btn-mp-ac span{
+      display: block;
+      background-color: $bgButtonFlash;
+      color: #fff;
+      font-size: 40px;
+      padding : 10px 12px;
+      border : 1px solid #fff;
+      @include circle();
+      &:hover{
+        background-color: #fff;
+        color: $bgButtonFlash;
+        border-color: $bgButtonFlash;
+        cursor: pointer;
+      }
+    }
+
+    &.bottom{
+      .zoom{
+        span{
+          border-radius :   0 0 50% 50%;
+        }
+        .btn-mp-ac{
+          &:first-child span{
+            border-radius : 50% 50% 0 0;
+          }
+        }
+      }
     }
   }
 }
