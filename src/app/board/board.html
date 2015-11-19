@@ -46,11 +46,20 @@
           </ul>
         </foreignObject>
         <foreignObject width="28" height="24" x="18.5" y="28"
-                       ng-show="boardCtrl.isCurrentMode('trash')" class="card-overlay">
+                       ng-show="boardCtrl.isCurrentMode('trash')"
+                       class="card-overlay">
           <button class="select-card-button" ng-class="{'active' : boardCtrl.cardIsSelected($index) }"
                   hm-tap="boardCtrl.selectCardToggle($index)">
             <i class="fa fa-check"></i>
           </button>
+        </foreignObject>
+        <foreignObject width="55" height="70" x="5" y="5" ng-show="boardCtrl.isCurrentMode('trap') && card.type == 'trap'">
+          <ul style="margin: 0;padding: 0;overflow-y: auto;overflow-x: hidden;height: 70px;">
+            <li ng-repeat="playerName in boardCtrl.players" width="55" height="5" style="font-size: 10px;"
+              ng-click="boardCtrl.trapPlayer(playerName)">
+              {{ playerName }}
+            </li>
+          </ul>
         </foreignObject>
       </g>
     </g>
